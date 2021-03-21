@@ -48,3 +48,51 @@ Therefore and URI consists of:
     file system path
     query parameters
     fragment identifier
+
+# URL
+
+![url](url.png)
+
+
+The URL() constructor is handy to parse (and validate) URLs in JavaScript.
+
+new URL(relativeOrAbsolute [, absoluteBase]) accepts as first argument an absolute or relative URL. When the first argument is relative, you have to indicate the second argument as an abolsute URL that serves the base for the first argument.
+
+After creating the URL() instance, you can easily access the most common URL components like:
+
+    url.search for raw query string
+    url.searchParams for an instance of URLSearchParams to pick query string parameters
+    url.hostname to access the hostname
+    url.pathname to read the pathname
+    url.hash to determine the hash value
+
+Regarding browser support, URL constructor is available in modern browsers. It is not, however, available in Internet Explorer. 
+
+
+
+
+# Example 
+
+## Url Validation
+Let’s use this invalid URL to initialize the parser:
+
+        try {
+          const url = new URL('https://example.com');
+        } catch (error) {
+          error; // => TypeError, "Failed to construct URL: Invalid URL"
+        }
+
+
+## URL manipulation
+
+Aside from accessing URL components, the properties like search, hostname, pathname, hash are writeable — this you can manipulate the URL.
+
+For example, let’s modify the hostname of an existing URL from red.com to blue.io:
+
+    const url = new URL('http://jpaths.com/index.html');
+
+    url.href; // => 'http://jpaths.com/index.html'
+
+    url.hostname = 'softreck.com';
+
+    url.href; // => 'http://softreck.com/path/index.html'
